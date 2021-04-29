@@ -12,6 +12,16 @@ const userLogin = async (req, res, next) => {
     }
 }
 
+const getAnonymousToken = async (req, res, next) => {
+    try {
+        const token = await authenticationService.getAnonymousToken();
+        res.header('Authorization', token).status(StatusCodes.OK).send(new SuccessResponse(StatusCodes.OK, token, 'Token will expire in an hour'));
+    } catch(e) {
+        next(e);
+    }
+}
+
 module.exports = {
-    userLogin
+    userLogin,
+    getAnonymousToken
 }

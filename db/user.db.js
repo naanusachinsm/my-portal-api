@@ -20,6 +20,15 @@ const getAllUsersDB = async () => {
     }
 }
 
+const userFilterDB = async () => {
+    try {
+        return await User.find({});
+    } catch(e) {
+        console.error(e);
+        throw new CustomError(e.name, e.message);
+    }
+}
+
 const getUserByEmailDB = async (email) => {
     try {
         return await User.findOne({ email: email })
@@ -63,5 +72,6 @@ module.exports = {
     getUserByIdDB,
     getUserByEmailDB,
     deleteUserByIdDB,
-    updateUserByIdDB
+    updateUserByIdDB,
+    userFilterDB
 }

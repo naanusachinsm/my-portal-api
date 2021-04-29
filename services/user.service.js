@@ -34,6 +34,14 @@ const getAllUsers = async () => {
     }
 }
 
+const userFilter = async () => {
+    try {
+        return await userDb.userFilterDB();
+    } catch(e) {
+        throw e;
+    }
+}
+
 const getUserById = async (id) => {
     try {
         return await userDb.getUserByIdDB(id)
@@ -72,5 +80,6 @@ module.exports = {
     getUserById,
     getUserByEmail,
     deleteUserById,
-    updateUserById
+    updateUserById,
+    userFilter
 }

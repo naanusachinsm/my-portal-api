@@ -21,6 +21,15 @@ const getAllUsers = async (req, res, next) => {
     }
 }
 
+const userFilter = async (req, res, next) => {
+    try {
+        const data = await userService.userFilter();
+        res.status(StatusCodes.OK).send(new SuccessResponse(StatusCodes.OK, data));
+    } catch(e) {
+        next(e);
+    }
+}
+
 const getUserById = async (req, res, next) => {
     try {
         const data = await userService.getUserById(req.params.id);
@@ -76,5 +85,6 @@ module.exports = {
     getUserById,
     getUserByEmail,
     deleteUserById,
-    updateUserById
+    updateUserById,
+    userFilter
 }
