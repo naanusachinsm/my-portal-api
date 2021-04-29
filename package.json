@@ -1,9 +1,10 @@
 {
     "name": "portal-api",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
-        "start": "nodemon ./bin/www"
+        "start": "nodemon ./bin/www",
+        "build": "node ./bin/www"
     },
     "dependencies": {
         "axios": "^0.21.1",
@@ -29,5 +30,8 @@
     },
     "devDependencies": {
         "eslint": "^7.25.0"
+    },
+    "engines": {
+        "node": "15.14.0"
     }
 }
