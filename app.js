@@ -10,6 +10,9 @@ const connectToDB = require('./services/mongodb.service');
 const indexRouter = require('./routes/index');
 const {handleErrors} = require('./utils/error');
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger/user-swagger');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 require('dotenv').config();
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +31,6 @@ app.use(
       credentials: true
     })
 );
-
 
 const logDir = './logs';
 if (!fs.existsSync(logDir)){
